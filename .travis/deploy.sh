@@ -16,20 +16,20 @@ ssh -o StrictHostKeyChecking=no koralbuild@$IP -p $PORT <<EOF
     # clone the repo on to the server
     echo "Cloning repo from github"
     git clone $REPO $DEPLOY_DIR
-    cd $LIVE_DIR
+    cd $DEPLOY_DIR
   else
     # pull changes
     echo "Pulling changes from github"
-    cd $LIVE_DIR
+    cd $DEPLOY_DIR
     git pull
   fi
   
-  echo "INSTALLING NODE PACKAGES"
+  echo "INSTALLING NODE PACKAGES \n"
   npm install
 
-  echo "UPDATING PACKAGES JUST TO BE SURE"
+  echo "UPDATING PACKAGES JUST TO BE SURE \n"
   npm update
 
-  echo "RESTARTING BKORAL.IO SERVER"
-  pm2 restart bkoralio-server.js
+  echo "BUILDING BKORAL.IO \n"
+  npm run build
 EOF

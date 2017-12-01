@@ -1,5 +1,8 @@
 #!/bin/bash
 
+CYAN='\033[0;36m'
+NC='\033[0m'
+
 echo "Running deploy"
 
 eval "$(ssh-agent -s)" # Start ssh-agent cache

@@ -14,22 +14,22 @@ ssh -o StrictHostKeyChecking=no koralbuild@$IP -p $PORT <<EOF
   
   if [ ! "$(ls -A $DEPLOY_DIR)" ]; then
     # clone the repo on to the server
-    echo "Cloning repo from github \n"
+    echo "Cloning repo from github"
     git clone $REPO $DEPLOY_DIR
     cd $DEPLOY_DIR
   else
     # pull changes
-    echo "Pulling changes from github \n"
+    echo "Pulling changes from github"
     cd $DEPLOY_DIR
     git pull
   fi
   
-  echo "INSTALLING NODE PACKAGES \n"
+  echo "INSTALLING NODE PACKAGES"
   npm install
 
-  echo "UPDATING PACKAGES JUST TO BE SURE \n"
+  echo "UPDATING PACKAGES JUST TO BE SURE"
   npm update
 
-  echo "BUILDING BKORAL.IO \n"
+  echo "BUILDING BKORAL.IO"
   npm run build
 EOF

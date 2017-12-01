@@ -1,6 +1,7 @@
 #!/bin/bash
 
 CYAN='\033[0;36m'
+GREEN='\033[0;32m'
 NC='\033[0m'
 
 echo "Running deploy"
@@ -27,12 +28,15 @@ ssh -o StrictHostKeyChecking=no koralbuild@$IP -p $PORT <<EOF
     git pull
   fi
   
-  echo "INSTALLING NODE PACKAGES"
+  echo -e "${CYAN}INSTALLING NODE PACKAGES${NC} \n"
   npm install
 
-  echo "UPDATING PACKAGES JUST TO BE SURE"
+  echo -e "${CYAN}UPDATING PACKAGES JUST TO BE SURE${NC} \n"
   npm update
 
-  echo "BUILDING BKORAL.IO"
+  echo -e "${CYAN}BUILDING BKORAL.IO${NC} \n"
+  
   npm run build
+
+  echo -e "${GREEN}Bkoral.io build complete.${NC} \n"
 EOF

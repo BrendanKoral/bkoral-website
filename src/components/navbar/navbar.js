@@ -1,24 +1,41 @@
 import React from 'react'
-// import NavItem from './navitem'
+import capitalizeFirstLetter from '../../helper/helpers'
 
 const items = [
-    {home: 'budicon-home-1'}, 
-    {portfolio: 'budicon-image'}, 
-    {about: 'budicon-author'}, 
-    {contact: 'budicon-profile'}, 
-    {blog: 'budicon-book-1'}, 
-    {elements: 'budicon-setting'}, 
-    {elsewhere: 'icon-heart-empty-1'}
+    {'home': 'budicon-home-1'}, 
+    {'portfolio': 'budicon-image'}, 
+    {'about': 'budicon-author'}, 
+    {'contact': 'budicon-profile'}, 
+    {'blog': 'budicon-book-1'}, 
+    {'elements': 'budicon-setting'}, 
+    {'elsewhere': 'icon-heart-empty-1'}
 ]
 
-const listItems = items.map((n, index) => {
- return <li key={index}>{Object.keys(n)[0]}</li>   
+const listItems = items.map((n, index, items) => {
+    let currentKey = Object.keys(n)[0]
+
+    let capitalizedItem = capitalizeFirstLetter(currentKey)
+
+    let compiledHref = `#${currentKey}`
+
+    let iconClass = items[index][currentKey]
+
+    let test
+
+ return (
+    <li key={index}>
+        <a className="hint--right" key={index} href={compiledHref}>
+            <i className={iconClass}></i>
+            <span>{capitalizedItem}</span>
+        </a>
+        </li>
+ )   
 })
 
 const Nav = () => {
     return (
     <ul className="nav navbar-nav">
-       {listItems}
+        {listItems}
     </ul>
     )
 }

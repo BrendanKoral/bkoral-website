@@ -20,11 +20,9 @@ const listItems = items.map((n, index, items) => {
 
     let iconClass = items[index][currentKey]
 
-    let test
-
  return (
     <li key={index}>
-        <a className="hint--right" key={index} href={compiledHref}>
+        <a className="hint--right" key={index} data-hint={capitalizedItem} href={compiledHref}>
             <i className={iconClass}></i>
             <span>{capitalizedItem}</span>
         </a>

@@ -38,5 +38,9 @@ ssh -o StrictHostKeyChecking=no koralbuild@$IP -p $PORT <<EOF
   
   npm run build
 
+  echo -e "${GREEN}Restarting Bkoral.io server.${NC} \n"
+
+  pm2 restart bkoralio-server
+
   echo -e "${GREEN}Bkoral.io build complete.${NC} \n"
 EOF

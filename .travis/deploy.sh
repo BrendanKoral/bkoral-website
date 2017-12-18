@@ -25,6 +25,11 @@ ssh -o StrictHostKeyChecking=no koralbuild@$IP -p $PORT <<EOF
     # pull changes
     echo -e "${CYAN}Pulling changes from github ${NC} \n"
     cd $DEPLOY_DIR
+
+    git fetch --all
+
+    git reset --hard origin/master
+
     git pull
   fi
   
